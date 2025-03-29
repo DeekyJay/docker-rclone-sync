@@ -32,7 +32,6 @@ else
     fi
 
     # Setup cron schedule
-    crontab -d
     echo "$CRON /sync.sh >>/tmp/sync.log 2>&1" > /tmp/crontab.tmp
     if [ -z "$CRON_ABORT" ]
     then
@@ -47,7 +46,7 @@ else
     echo "INFO: Starting crond ..."
     touch /tmp/sync.log
     touch /tmp/crond.log
-    crond -b -l 0 -L /tmp/crond.log
+    crond -b -l 8 -L /tmp/crond.log
     echo "INFO: crond started"
     tail -F /tmp/crond.log /tmp/sync.log
   fi

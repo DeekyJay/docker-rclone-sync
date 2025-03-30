@@ -17,6 +17,10 @@ then
   echo "INFO: Define SYNC_SRC and SYNC_DEST to start sync process."
 else
   # SYNC_SRC and SYNC_DEST setup
+  # Export variables with proper quoting to handle spaces in paths
+  export SYNC_SRC="$SYNC_SRC"
+  export SYNC_DEST="$SYNC_DEST"
+  
   # run sync either once or in cron depending on CRON
   if [ -z "$CRON" ]
   then
